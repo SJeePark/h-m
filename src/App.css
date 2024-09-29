@@ -1,0 +1,54 @@
+/* component/Navbar */
+.login-button{
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.nav-section{
+  display: flex;
+  justify-content: center;
+}
+
+.menu-list{
+  display: flex;
+  list-style-type: none;
+}
+
+.menu-list li{
+  padding: 10px;
+}
+
+.menu-area{
+  display: flex;
+  justify-content: center;
+}
+
+.search-box{
+  padding-top: 8px;
+}
+
+.search-box input{
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+
+
+/* ProductCard */
+.card{
+    border: none;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    margin-top: 30px;
+    width: 90%;
+}
+
+.card :hover{
+    width: 110%;
+    height: auto;
+    cursor: pointer;
+
+}
