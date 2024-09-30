@@ -1,16 +1,18 @@
 import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
-    const menuList = ['여성', 'Divvided', '남성', '신생아/유아', '아동', 'Sale', '지속가능성']
+    const menuList = ['여성', 'Divided', '남성', '신생아/유아', '아동', 'Sale', '지속가능성']
     const navigate = useNavigate()
+    const [search, setSearch] = useState('');
 
     const goToLogin=()=>{
         navigate('/login');
     }
+
 
   return (
     <div>
@@ -30,8 +32,11 @@ const Navbar = () => {
                 {menuList.map(menu=><li>{menu}</li>)}
             </ul>
         <div className='search-box'>
-            <FontAwesomeIcon icon={faSearch}/>
-            <input type='text' />
+            <FontAwesomeIcon icon={faSearch} onClick={() => setSearch(search)}/>
+            <input type='text' 
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}/>
+
         </div>
       </div>
     </div>

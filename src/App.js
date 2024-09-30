@@ -5,7 +5,7 @@ import './App.css';
 import Navbar from './component/Navbar';
 import LoginPage from './page/LoginPage';
 import ProductAll from './page/ProductAll';
-import ProductDetail from './page/ProductDetail';
+import PrivateRoute from './route/PrivateRoute';
 
 /*
 1. 전체 상품페이지, 로그인, 상품 상페 페이지
@@ -34,7 +34,7 @@ function App() {
       <Routes>
         <Route path='/' element={<ProductAll authenticate={authenticate}/>}></Route>
         <Route path='/login' element={<LoginPage setAuthenticate={setAuthenticate}/>}></Route>
-        <Route path='/product/:id' element={authenticate?<ProductDetail/>:<LoginPage/>}></Route>
+        <Route path='/product/:id' element={<PrivateRoute authenticate={authenticate}/>}></Route>
       </Routes>
     </div>
   );

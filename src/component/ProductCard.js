@@ -7,7 +7,7 @@ const ProductCard = ({item, authenticate}) => {
 
   const goToDetail =()=> {
     if(authenticate){
-      navigate('/product/:id')
+      navigate(`/product/${item.id}`)
     } else{
       navigate('/login')
     }
