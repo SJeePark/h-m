@@ -36,6 +36,14 @@
   border-radius: 10px;
 }
 
+img{
+  cursor: pointer;
+}
+
+.userIcon{
+  padding: 5px;
+  padding-right: 5px;
+}
 
 
 /* ProductCard */
@@ -49,11 +57,16 @@
 }
 
 .card :hover{
-    width: 110%;
+    width: 102%;
     height: auto;
     cursor: pointer;
 
 }
+
+.card > *{
+  padding: 0 auto;
+}
+
 
 /* ProductDetail */
 .product-img{
@@ -71,3 +84,9 @@
   height: auto;
 
 }
+
+/* ProductAll */
+.container{
+  margin: 0px auto;
+}
+
