@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './component/Navbar';
+import Cart from './page/Cart';
 import LoginPage from './page/LoginPage';
 import ProductAll from './page/ProductAll';
 import PrivateRoute from './route/PrivateRoute';
@@ -35,6 +36,7 @@ function App() {
         <Route path='/' element={<ProductAll authenticate={authenticate}/>}></Route>
         <Route path='/login' element={<LoginPage setAuthenticate={setAuthenticate}/>}></Route>
         <Route path='/product/:id' element={<PrivateRoute authenticate={authenticate}/>}></Route>
+        <Route path='/cart' element={<Cart authenticate={authenticate}/>}></Route>
       </Routes>
     </div>
   );

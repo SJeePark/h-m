@@ -1,4 +1,4 @@
-import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBagShopping, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -31,6 +31,14 @@ const Navbar = ({authenticate, setAuthenticate}) => {
       navigate('/');
     }
 
+    const goToCart = () =>{
+      if(authenticate===false) {
+        goToLogin();
+      } else {
+        navigate('/cart');
+      }
+    }
+
     const log = () =>{
       if(authenticate) {
         setAuthenticate(false);
@@ -44,9 +52,15 @@ const Navbar = ({authenticate, setAuthenticate}) => {
        <div>
         {isMobile && <SideBar/>}
       <div>
-        <div className='login-button' onClick={log}>
-          <FontAwesomeIcon icon={faUser} className='userIcon'/>
-          <div className='log'>{authenticate?"Logout":"Login"}</div>
+        <div className='login-button'>
+          <div className='cart' onClick={goToCart}>
+            <FontAwesomeIcon icon={faBagShopping} />
+          </div>
+          <div onClick={log}>
+            <FontAwesomeIcon icon={faUser} className='userIcon'/>
+          </div>
+          <div onClick={log} className='log'>{authenticate?"Logout":"Login"}</div>
+
         </div>
       </div>
 
