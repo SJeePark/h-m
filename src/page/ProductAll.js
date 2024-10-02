@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../component/ProductCard';
 
-const ProductAll = ({authenticate}) => {
+const ProductAll = ({authenticate, addToCart}) => {
   const [productList, setProductList ] =useState([]);
   const [query, setQuery] = useSearchParams();
 
@@ -26,7 +26,7 @@ const ProductAll = ({authenticate}) => {
     <Container/>
     <Row  className='container'>
     {productList.map((menu)=>(
-      <Col className='item-card' lg={3}><ProductCard authenticate={authenticate} item={menu}/></Col>
+      <Col className='item-card' lg={3}><ProductCard addToCart={addToCart} authenticate={authenticate} item={menu}/></Col>
     ))}
     </Row>
     
