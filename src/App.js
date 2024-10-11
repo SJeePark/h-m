@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './component/Navbar';
@@ -22,8 +22,6 @@ import PrivateRoute from './route/PrivateRoute';
 
 function App() {
 
-  const [authenticate, setAuthenticate] = useState(false);  //true면 로그인, false면 로그인 안됨
-
   const [cart, setCart] = useState([]);
 
   // 장바구니에 상품 추가하는 함수
@@ -31,18 +29,14 @@ function App() {
     setCart([...cart, product]);  // 기존 장바구니에 새 상품 추가
   };
 
-  
-  useEffect(()=>{
-    console.log(authenticate)
-  }, [authenticate])
 
   return (
     <div>
-      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/>
+      <Navbar/>
       <Routes>
-        <Route path='/' element={<ProductAll addToCart={addToCart} authenticate={authenticate}/>}></Route>
-        <Route path='/login' element={<LoginPage setAuthenticate={setAuthenticate}/>}></Route>
-        <Route path='/product/:id' element={<PrivateRoute authenticate={authenticate}/>}></Route>
+        <Route path='/' element={<ProductAll addToCart={addToCart}/>}></Route>
+        <Route path='/login' element={<LoginPage/>}></Route>
+        <Route path='/product/:id' element={<PrivateRoute/>}></Route>
         <Route path='/cart' element={<Cart cart={cart}/>}></Route>
       </Routes>
     </div>

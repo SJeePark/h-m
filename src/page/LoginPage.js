@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { authenticateAction } from '../redux/actions/authenticateAction';
 
 const LoginPage = ({setAuthenticate}) => {
+  const [id, setId] = useState('')
+  const [password, setPassword] = useState('')
   const navigate =useNavigate()
+  const dispatch = useDispatch();
+  
   const loginUser = (event)=>{
     console.log('login user function issue')
     event.preventDefault(); //새로고침을 막아주는 함수
-    setAuthenticate(true);
+    dispatch(authenticateAction.login(id, password));
     navigate('/');
 }
 
@@ -18,7 +24,7 @@ const LoginPage = ({setAuthenticate}) => {
       <Form onSubmit={(event)=> loginUser(event)}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control type="email" placeholder="Enter email" onChange={(event)=>setId(event.target.value)}></Form.Control>
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -26,7 +32,7 @@ const LoginPage = ({setAuthenticate}) => {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control type="password" placeholder="Password" onChange={(event)=>setPassword(event.target.value)}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
